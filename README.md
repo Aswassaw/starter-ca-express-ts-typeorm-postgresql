@@ -1,4 +1,8 @@
-# Starter Clean Architecture Express TypeScript TypeORM PostgreSQL
+<h2 align="center">
+  Starter Clean Architecture Express TypeScript TypeORM PostgreSQL
+</h2>
+
+---
 
 ## About The Project
 
