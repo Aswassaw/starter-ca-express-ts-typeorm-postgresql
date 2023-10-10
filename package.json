@@ -6,6 +6,9 @@
   "repository": "https://github.com/andry-pebrianto/starter-ca-express-ts-typeorm-postgresql.git",
   "author": "Andry Pebrianto <andrypeb227@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon src/app.ts"
+  },
   "devDependencies": {
     "@types/express": "^4.17.19",
     "@types/node": "^20.8.4",
