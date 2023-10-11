@@ -8,15 +8,21 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/app.ts",
-    "start": "node dist/index.js",
+    "start": "node dist/src/app.js",
     "migrate:generate": "npx typeorm-ts-node-commonjs migration:generate -d database/data-source.ts database/migration/MigrationFile",
     "migrate:up": "npx typeorm-ts-node-commonjs migration:run -d database/data-source.ts",
-    "migrate:down": "npx typeorm-ts-node-commonjs migration:revert -d database/data-source.ts"
+    "migrate:down": "npx typeorm-ts-node-commonjs migration:revert -d database/data-source.ts",
+    "test": "jest",
+    "test:watch": "jest --watchAll --coverage",
+    "compile": "npx tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.19",
+    "@types/jest": "^29.5.5",
     "@types/node": "^20.8.4",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
