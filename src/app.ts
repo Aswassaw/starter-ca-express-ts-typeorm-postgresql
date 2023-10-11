@@ -2,6 +2,7 @@ import { PostgreDataSource } from "../database/data-source";
 import createServer from "./Interfaces/http/createServer";
 
 PostgreDataSource.initialize()
+
   .then(async () => {
     const PORT = process.env.PORT || 5000;
 
@@ -13,4 +14,5 @@ PostgreDataSource.initialize()
       console.log("Developed by Andry Pebrianto");
     });
   })
+
   .catch((error) => console.log(error));

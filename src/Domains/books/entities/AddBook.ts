@@ -6,12 +6,10 @@ class AddBook {
   bookName: string;
 
   constructor(payload: PayloadType) {
-    const { bookName } = payload;
-
-    this.bookName = bookName;
+    this.bookName = payload.bookName;
   }
 
-  _verifyPayload(payload: PayloadType) {
+  private _verifyPayload(payload: PayloadType): void {
     if (!payload.bookName) {
       throw new Error("ADD_BOOK.NOT_CONTAIN_NEEDED_PROPERTY");
     }
