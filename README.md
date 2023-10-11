@@ -15,6 +15,7 @@ Starter project implementing Clean Architecture to start creating backend servic
 - [TypeORM](https://typeorm.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Jest](https://jestjs.io/)
+- [Eslint](https://eslint.org/)
 
 ## Authors
 

@@ -16,11 +16,11 @@ class AddedBook {
 
   private _verifyPayload(payload: PayloadType): void {
     if (!payload.id || !payload.bookName) {
-      throw new Error("ADD_BOOK.NOT_CONTAIN_NEEDED_PROPERTY");
+      throw new Error("ADDED_BOOK.NOT_CONTAIN_NEEDED_PROPERTY");
     }
 
     if (typeof payload.id !== "string" || typeof payload.bookName !== "string") {
-      throw new Error("ADD_BOOK.NOT_MEET_DATA_TYPE_SPECIFICATION");
+      throw new Error("ADDED_BOOK.NOT_MEET_DATA_TYPE_SPECIFICATION");
     }
   }
 }
