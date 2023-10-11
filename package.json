@@ -13,7 +13,7 @@
     "migrate:up": "npx typeorm-ts-node-commonjs migration:run -d database/data-source.ts",
     "migrate:down": "npx typeorm-ts-node-commonjs migration:revert -d database/data-source.ts",
     "test": "jest",
-    "test:watch": "jest --watchAll --coverage",
+    "test:watch": "jest --watchAll",
     "compile": "npx tsc"
   },
   "devDependencies": {
