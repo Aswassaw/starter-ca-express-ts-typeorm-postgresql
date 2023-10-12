@@ -12,7 +12,7 @@
     "migrate:generate": "npx typeorm-ts-node-commonjs migration:generate -d database/data-source.ts database/migration/MigrationFile",
     "migrate:up": "npx typeorm-ts-node-commonjs migration:run -d database/data-source.ts",
     "migrate:down": "npx typeorm-ts-node-commonjs migration:revert -d database/data-source.ts",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watchAll",
     "compile": "npx tsc",
     "lint": "eslint . --ignore-path .eslintignore --ext .ts",
