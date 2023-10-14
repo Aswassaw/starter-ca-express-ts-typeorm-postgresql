@@ -5,6 +5,6 @@ export class Book {
   @PrimaryColumn({ type: "uuid" })
     id!: string;
 
-  @Column()
+  @Column({ length: 50 })
     book_name!: string;
 }
