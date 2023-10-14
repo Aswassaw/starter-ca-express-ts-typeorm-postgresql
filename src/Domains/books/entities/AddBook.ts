@@ -1,17 +1,17 @@
-type PayloadType = {
+type AddBookType = {
   bookName: string;
 };
 
 class AddBook {
   bookName: string;
 
-  constructor(payload: PayloadType) {
+  constructor(payload: AddBookType) {
     this._verifyPayload(payload);
 
     this.bookName = payload.bookName;
   }
 
-  private _verifyPayload(payload: PayloadType): void {
+  private _verifyPayload(payload: AddBookType): void {
     if (!payload.bookName) {
       throw new Error("ADD_BOOK.NOT_CONTAIN_NEEDED_PROPERTY");
     }

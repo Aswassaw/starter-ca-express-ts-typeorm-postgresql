@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-class EnvList {
+class Env {
   static NODE_ENV: string = process.env.NODE_ENV || "prod";
   static PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 5000;
 
@@ -19,4 +19,4 @@ class EnvList {
   static DB_NAME_TEST: string = process.env.DB_NAME_TEST || "typeorm-db-test";
 }
 
-export default EnvList;
+export default Env;
