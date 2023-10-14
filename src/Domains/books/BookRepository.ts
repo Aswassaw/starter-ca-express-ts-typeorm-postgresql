@@ -1,12 +1,12 @@
 import AddBook from "./entities/AddBook";
 import AddedBook from "./entities/AddedBook";
 
-abstract class BookRepository {
-  abstract add: (book: AddBook) => AddedBook;
-  abstract findAll: () => AddedBook[];
-  abstract findOne: (id: string) => AddedBook;
-  abstract updateOne: (id: string, book: AddBook) => AddedBook;
-  abstract deleteOne: (id: string) => AddedBook;
+interface BookRepository {
+  add: (newBookData: AddBook) => Promise<AddedBook>;
+  // findAll: () => Promise<AddedBook[]>;
+  // findOne: (id: string) => Promise<AddedBook>;
+  // updateOne: (id: string, newBookData: AddBook) => Promise<AddedBook>;
+  // deleteOne: (id: string) => Promise<AddedBook>;
 }
 
 export default BookRepository;
