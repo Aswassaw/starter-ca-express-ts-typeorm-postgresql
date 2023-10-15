@@ -1,14 +1,18 @@
 import { Repository } from "typeorm";
-import { v4 as uuidv4, v4 } from "uuid";
-import { PostgreDataSource } from "../../../database/data-source";
+import { v4 } from "uuid";
 import { Book } from "../../../database/entitities/Book";
 import BookRepository from "../../Domains/books/BookRepository";
 import AddBook from "../../Domains/books/entities/AddBook";
 import AddedBook from "../../Domains/books/entities/AddedBook";
 
 class BookRepositoryImpl implements BookRepository {
-  private _bookDB: Repository<Book> = PostgreDataSource.getRepository(Book);
-  private _idGenerator: typeof v4 = uuidv4;
+  private _bookDB: Repository<Book>;
+  private _idGenerator: typeof v4;
+
+  constructor(bookDB: Repository<Book>, idGenerator: typeof v4) {
+    this._bookDB = bookDB;
+    this._idGenerator = idGenerator;
+  }
 
   async add(newBookData: AddBook): Promise<AddedBook> {
     const { bookName } = newBookData;

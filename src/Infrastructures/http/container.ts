@@ -1,0 +1,14 @@
+import { container } from "tsyringe";
+import { Repository } from "typeorm";
+import { v4 as uuidv4, v4 } from "uuid";
+import { PostgreDataSource } from "../../../database/data-source";
+import { Book } from "../../../database/entitities/Book";
+
+container.register<typeof v4>("idGenerator", {
+  useValue: uuidv4,
+});
+container.register<Repository<Book>>("bookDB", {
+  useValue: PostgreDataSource.getRepository(Book),
+});
+
+export default container;

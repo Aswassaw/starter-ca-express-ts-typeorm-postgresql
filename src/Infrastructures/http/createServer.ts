@@ -1,8 +1,11 @@
+import "reflect-metadata";
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 
 const createServer: Express = express();
+
+// container.resolve<typeof v4>("idGenerator");
 
 createServer.use(express.json());
 createServer.use(helmet());
