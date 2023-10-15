@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import AddBook from "../AddBook";
 
 describe("a AddBook entities", () => {
