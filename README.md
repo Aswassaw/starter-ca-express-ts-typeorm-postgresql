@@ -14,6 +14,7 @@ Starter project implementing Clean Architecture to start creating backend servic
 - [TypeScript](https://www.typescriptlang.org/)
 - [TypeORM](https://typeorm.io/)
 - [PostgreSQL](https://www.postgresql.org/)
+- [Joi](https://joi.dev/)
 - [Jest](https://jestjs.io/)
 - [Eslint](https://eslint.org/)
 
