@@ -12,10 +12,10 @@ class BookService {
   constructor(container: DependencyContainer) {
     this._container = container;
 
-    this.postBookService = this.postBookService.bind(this);
+    this.addBookService = this.addBookService.bind(this);
   }
 
-  async postBookService(req: Request, res: Response): Promise<Response> {
+  async addBookService(req: Request, res: Response): Promise<Response> {
     const payload: {
       bookName: string;
     } = {
@@ -31,7 +31,9 @@ class BookService {
     const addedBook = await addBookUseCase.execute(payload);
 
     return res.status(201).json({
+      code: 201,
       status: "success",
+      message: "Add Book Success",
       data: addedBook,
     });
   }
