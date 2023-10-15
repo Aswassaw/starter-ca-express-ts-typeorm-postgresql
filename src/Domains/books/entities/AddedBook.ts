@@ -4,8 +4,8 @@ type AddedBookType = {
 };
 
 class AddedBook {
-  id: string;
-  bookName: string;
+  readonly id: string;
+  readonly bookName: string;
 
   constructor(payload: AddedBookType) {
     this._verifyPayload(payload);

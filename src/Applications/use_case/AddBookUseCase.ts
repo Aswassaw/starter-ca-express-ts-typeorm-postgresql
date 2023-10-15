@@ -13,7 +13,7 @@ class AddBookUseCase {
   }
 
   async execute({ bookName }: { bookName: string }) {
-    const addBook = new AddBook({ bookName });
+    const addBook: AddBook = new AddBook({ bookName });
     return this._bookRepository.add(addBook);
   }
 }

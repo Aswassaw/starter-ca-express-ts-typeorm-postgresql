@@ -3,7 +3,7 @@ type AddBookType = {
 };
 
 class AddBook {
-  bookName: string;
+  readonly bookName: string;
 
   constructor(payload: AddBookType) {
     this._verifyPayload(payload);

@@ -1,23 +1,23 @@
-import { Repository } from "typeorm";
 import { v4 } from "uuid";
+import { Repository } from "typeorm";
 import { Book } from "../../../database/entitities/Book";
 import BookRepository from "../../Domains/books/BookRepository";
 import AddBook from "../../Domains/books/entities/AddBook";
 import AddedBook from "../../Domains/books/entities/AddedBook";
 
 class BookRepositoryImpl implements BookRepository {
-  private _bookDB: Repository<Book>;
   private _idGenerator: typeof v4;
+  private _bookDB: Repository<Book>;
 
-  constructor(bookDB: Repository<Book>, idGenerator: typeof v4) {
-    this._bookDB = bookDB;
+  constructor(idGenerator: typeof v4, bookDB: Repository<Book>) {
     this._idGenerator = idGenerator;
+    this._bookDB = bookDB;
   }
 
   async add(newBookData: AddBook): Promise<AddedBook> {
-    const { bookName } = newBookData;
+    const { bookName }: AddBook = newBookData;
 
-    const book = new Book();
+    const book: Book = new Book();
     book.id = this._idGenerator();
     book.book_name = bookName;
 

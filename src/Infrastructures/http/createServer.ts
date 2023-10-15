@@ -14,6 +14,6 @@ createServer.get("/", (req: Request, res: Response): Response<string> => {
   return res.status(200).send("Server Online!");
 });
 
-createServer.use("/api/v1", BookRouter);
+createServer.use(BookRouter);
 
 export default createServer;

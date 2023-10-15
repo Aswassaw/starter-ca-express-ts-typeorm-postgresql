@@ -1,10 +1,10 @@
 import { DependencyContainer } from "tsyringe";
 import { Request, Response } from "express";
-import { Repository } from "typeorm";
 import { v4 } from "uuid";
+import { Repository } from "typeorm";
+import { Book } from "../../../../../database/entitities/Book";
 import BookRepositoryImpl from "../../../../Infrastructures/repository/BookRepositoryImpl";
 import AddBookUseCase from "../../../../Applications/use_case/AddBookUseCase";
-import { Book } from "../../../../../database/entitities/Book";
 
 class BookService {
   private _container: DependencyContainer;
@@ -16,22 +16,23 @@ class BookService {
   }
 
   async postBookService(req: Request, res: Response): Promise<Response> {
-    const payload = {
+    const payload: {
+      bookName: string;
+    } = {
       bookName: req.body.bookName,
     };
 
-    const bookRepositoryImpl = new BookRepositoryImpl(
-      this._container.resolve<Repository<Book>>("bookDB"),
-      this._container.resolve<typeof v4>("idGenerator")
-    );
     const addBookUseCase = new AddBookUseCase({
-      bookRepository: bookRepositoryImpl,
+      bookRepository: new BookRepositoryImpl(
+        this._container.resolve<typeof v4>("idGenerator"),
+        this._container.resolve<Repository<Book>>("bookDB")
+      ),
     });
     const addedBook = await addBookUseCase.execute(payload);
 
     return res.status(201).json({
       status: "success",
-      data: addedBook
+      data: addedBook,
     });
   }
 }
