@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
-import { Repository } from "typeorm";
 import { v4 as uuidv4, v4 } from "uuid";
+import { Repository } from "typeorm";
 import { PostgreDataSource } from "../../../database/data-source";
 import { Book } from "../../../database/entitities/Book";
 
