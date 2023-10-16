@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 import { Repository } from "typeorm";
-import { Book } from "../../../database/entitities/Book";
+import { Book } from "../../../database/entities/Book";
 import BookRepository from "../../Domains/books/BookRepository";
 import AddBook from "../../Domains/books/entities/AddBook";
 import AddedBook from "../../Domains/books/entities/AddedBook";

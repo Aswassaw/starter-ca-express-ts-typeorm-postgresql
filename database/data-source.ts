@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import Env from "../src/Commons/variables/Env";
-import { Book } from "./entitities/Book";
+import { Book } from "./entities/Book";
 import { MigrationFile1697282166658 } from "./migration/1697282166658-MigrationFile";
 
 export const PostgreDataSource = new DataSource({

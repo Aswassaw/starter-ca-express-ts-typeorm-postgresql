@@ -2,7 +2,7 @@ import { DependencyContainer } from "tsyringe";
 import { Request, Response } from "express";
 import { v4 } from "uuid";
 import { Repository } from "typeorm";
-import { Book } from "../../../../../database/entitities/Book";
+import { Book } from "../../../../../database/entities/Book";
 import BookRepositoryImpl from "../../../../Infrastructures/repository/BookRepositoryImpl";
 import AddBookUseCase from "../../../../Applications/use_case/AddBookUseCase";
 import handleError from "../../../../Infrastructures/helpers/exception/handleError";
