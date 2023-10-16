@@ -16,4 +16,8 @@ createServer.get("/", (req: Request, res: Response): Response<string> => {
 
 createServer.use(BookRouter);
 
+createServer.use((req: Request, res: Response): Response<string> => {
+  return res.status(404).send("404 - Not Found!");
+});
+
 export default createServer;
