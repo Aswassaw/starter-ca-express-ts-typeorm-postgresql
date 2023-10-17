@@ -5,7 +5,7 @@ import { Repository } from "typeorm";
 import { Book } from "../../../../../database/entities/Book";
 import BookRepositoryImpl from "../../../../Infrastructures/repository/BookRepositoryImpl";
 import AddBookUseCase from "../../../../Applications/use_case/AddBookUseCase";
-import handleError from "../../../../Infrastructures/helpers/exception/handleError";
+import handleError from "../../../../Infrastructures/helper/exception/handleError";
 
 class BookService {
   private _container: DependencyContainer;
