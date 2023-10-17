@@ -5,6 +5,7 @@ import { Repository } from "typeorm";
 import { Book } from "../../../../../database/entities/Book";
 import BookRepositoryImpl from "../../../../Infrastructures/repository/BookRepositoryImpl";
 import AddBookUseCase from "../../../../Applications/use_case/AddBookUseCase";
+import FindAllBookUseCase from "../../../../Applications/use_case/FindAllBookUseCase.ts";
 import handleError from "../../../../Infrastructures/helper/exception/handleError";
 
 class BookService {
@@ -14,6 +15,7 @@ class BookService {
     this._container = container;
 
     this.addBookService = this.addBookService.bind(this);
+    this.findAllBookService = this.findAllBookService.bind(this);
   }
 
   async addBookService(req: Request, res: Response): Promise<Response> {
@@ -37,6 +39,27 @@ class BookService {
         status: "success",
         message: "Add Book Success",
         data: addBookResponse,
+      });
+    } catch (error) {
+      return handleError(res, error);
+    }
+  }
+
+  async findAllBookService(req: Request, res: Response): Promise<Response> {
+    try {
+      const findAllBoolUseCase = new FindAllBookUseCase({
+        bookRepository: new BookRepositoryImpl(
+          this._container.resolve<typeof v4>("idGenerator"),
+          this._container.resolve<Repository<Book>>("bookDB")
+        ),
+      });
+      const findAllBookResponse = await findAllBoolUseCase.execute();
+
+      return res.status(201).json({
+        code: 201,
+        status: "success",
+        message: "Add Book Success",
+        data: findAllBookResponse,
       });
     } catch (error) {
       return handleError(res, error);

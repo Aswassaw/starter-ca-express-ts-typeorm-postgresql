@@ -1,17 +1,17 @@
-type AddBookResponseType = {
+type DetailBookResponseType = {
   id: string;
   bookName: string;
   createdAt: Date;
   updatedAt: Date;
 };
 
-class AddBookResponse {
+class DetailBookResponse {
   readonly id: string;
   readonly bookName: string;
   readonly createdAt: Date;
   readonly updatedAt: Date;
 
-  constructor(payload: AddBookResponseType) {
+  constructor(payload: DetailBookResponseType) {
     this.id = payload.id;
     this.bookName = payload.bookName;
     this.createdAt = payload.createdAt;
@@ -19,4 +19,4 @@ class AddBookResponse {
   }
 }
 
-export default AddBookResponse;
+export default DetailBookResponse;
