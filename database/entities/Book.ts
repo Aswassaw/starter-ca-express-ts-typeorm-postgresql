@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 @Entity("books")
 export class Book {
@@ -7,4 +7,10 @@ export class Book {
 
   @Column({ length: 50 })
     book_name!: string;
+
+  @CreateDateColumn({ type: "timestamp with time zone" })
+    created_at!: Date;
+
+  @UpdateDateColumn({ type: "timestamp with time zone" })
+    updated_at!: Date;
 }

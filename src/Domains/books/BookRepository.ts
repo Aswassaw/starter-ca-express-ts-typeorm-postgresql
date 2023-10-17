@@ -1,9 +1,9 @@
 import AddBook from "./entities/AddBook";
-import AddedBook from "./entities/AddedBook";
+import AddBookResponse from "./entities/AddBookResponse";
 
 abstract class BookRepository {
-  abstract add(newBookData: AddBook): Promise<AddedBook>;
-  // abstract findAll(): Promise<AddedBook[]>;
+  abstract add(newBookData: AddBook): Promise<AddBookResponse>;
+  // abstract findAll(): Promise<DetailBook[]>;
   // abstract findOne(id: string): Promise<AddedBook>;
   // abstract updateOne(id: string, newBookData: AddBook): Promise<AddedBook>;
   // abstract deleteOne(id: string): Promise<AddedBook>;

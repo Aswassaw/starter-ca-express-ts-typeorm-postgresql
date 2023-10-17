@@ -30,13 +30,13 @@ class BookService {
           this._container.resolve<Repository<Book>>("bookDB")
         ),
       });
-      const addedBook = await addBookUseCase.execute(payload);
+      const addBookResponse = await addBookUseCase.execute(payload);
 
       return res.status(201).json({
         code: 201,
         status: "success",
         message: "Add Book Success",
-        data: addedBook,
+        data: addBookResponse,
       });
     } catch (error) {
       return handleError(res, error);
