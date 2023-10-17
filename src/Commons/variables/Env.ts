@@ -10,11 +10,6 @@ class Env {
   static DB_USERNAME: string = process.env.DB_USERNAME || "postgres";
   static DB_PASSWORD: string = process.env.DB_PASSWORD || "secret";
   static DB_NAME: string = process.env.DB_NAME || "typeorm-db";
-  static DB_HOST_TEST: string = process.env.DB_HOST_TEST || "localhost";
-  static DB_PORT_TEST: number = process.env.DB_PORT_TEST ? parseInt(process.env.DB_PORT_TEST) : 5432;
-  static DB_USERNAME_TEST: string = process.env.DB_USERNAME_TEST || "postgres";
-  static DB_PASSWORD_TEST: string = process.env.DB_PASSWORD_TEST || "secret";
-  static DB_NAME_TEST: string = process.env.DB_NAME_TEST || "typeorm-db-test";
 }
 
 export default Env;
