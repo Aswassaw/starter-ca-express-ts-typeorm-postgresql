@@ -5,6 +5,10 @@ type AddBookUseCaseType = {
   bookRepository: BookRepository;
 };
 
+type AddBookUseCasePayloadType = {
+  bookName: string;
+};
+
 class AddBookUseCase {
   private _bookRepository: BookRepository;
 
@@ -12,9 +16,8 @@ class AddBookUseCase {
     this._bookRepository = paylaod.bookRepository;
   }
 
-  async execute({ bookName }: { bookName: string }) {
-    const addBook: AddBook = new AddBook({ bookName });
-    return this._bookRepository.add(addBook);
+  async execute({ bookName }: AddBookUseCasePayloadType) {
+    return this._bookRepository.add(new AddBook({ bookName }));
   }
 }
 

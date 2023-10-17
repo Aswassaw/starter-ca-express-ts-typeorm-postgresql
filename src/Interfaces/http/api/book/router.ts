@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response, Router } from "express";
 import BookService from "./service";
 import container from "../../../../Infrastructures/container";
-import runValidation from "../../../../Infrastructures/middleware/runValidation";
-import { addBookSchema } from "../../../../Infrastructures/helper/validation/bookSchema";
+import runValidation from "../../../../Infrastructures/middleware/validation/runValidation";
+import { addBookSchema } from "../../../../Infrastructures/middleware/validation/schema/bookSchema";
 
 const bookService: BookService = new BookService(container);
 

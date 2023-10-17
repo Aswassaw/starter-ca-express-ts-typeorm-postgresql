@@ -3,7 +3,6 @@ import { Repository } from "typeorm";
 import { Book } from "../../../database/entities/Book";
 import BookRepository from "../../Domains/books/BookRepository";
 import AddBook from "../../Domains/books/entities/AddBook";
-import AddBookResponse from "../../Domains/books/entities/AddBookResponse";
 import DetailBookResponse from "../../Domains/books/entities/DetailBookResponse";
 
 class BookRepositoryImpl extends BookRepository {
@@ -17,8 +16,8 @@ class BookRepositoryImpl extends BookRepository {
     this._bookDB = bookDB;
   }
 
-  async add(newBookData: AddBook): Promise<AddBookResponse> {
-    const { bookName }: AddBook = newBookData;
+  async add(payload: AddBook): Promise<DetailBookResponse> {
+    const { bookName }: AddBook = payload;
 
     const book: Book = new Book();
     book.id = this._idGenerator();
@@ -26,7 +25,7 @@ class BookRepositoryImpl extends BookRepository {
 
     await this._bookDB.save(book);
 
-    return new AddBookResponse({
+    return new DetailBookResponse({
       id: book.id,
       bookName: book.book_name,
       createdAt: book.created_at,
