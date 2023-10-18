@@ -4,6 +4,7 @@ import { Book } from "../../../database/entities/Book";
 import BookRepository from "../../Domains/books/BookRepository";
 import AddBook from "../../Domains/books/entities/AddBook";
 import DetailBookResponse from "../../Domains/books/entities/DetailBookResponse";
+import NotFoundError from "../helper/exception/type/NotFoundError";
 
 class BookRepositoryImpl extends BookRepository {
   private _idGenerator: typeof v4;
@@ -53,7 +54,10 @@ class BookRepositoryImpl extends BookRepository {
     });
 
     if (!book) {
-      throw Error("NOT FOUND BRO");
+      throw new NotFoundError(
+        `Book with ID ${id} not found`,
+        "Book Not Found"
+      );
     }
 
     return new DetailBookResponse({

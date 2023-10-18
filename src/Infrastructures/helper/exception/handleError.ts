@@ -1,7 +1,21 @@
 import { Response } from "express";
+import ClientError from "./type/ClientError";
 
 const handleError = (res: Response, error: unknown): Response => {
+  if (error instanceof ClientError) {
+    console.log(error.message);
+
+    return res.status(error.statusCode).json({
+      code: error.statusCode,
+      status: "failed",
+      message: error.statusMessage,
+      error: error.message,
+    });
+  }
+
   if (error instanceof Error) {
+    console.log(error.message);
+
     return res.status(500).json({
       code: 500,
       status: "failed",
@@ -14,7 +28,7 @@ const handleError = (res: Response, error: unknown): Response => {
     code: 500,
     status: "failed",
     message: "Internal Server Error",
-    error: "Error occurred",
+    error: "An unknown error occurred",
   });
 };
 
