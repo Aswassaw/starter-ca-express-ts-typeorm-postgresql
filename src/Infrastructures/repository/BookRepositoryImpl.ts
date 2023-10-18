@@ -83,6 +83,18 @@ class BookRepositoryImpl extends BookRepository {
       updatedAt: book.updated_at,
     });
   }
+
+  async deleteOne(id: string): Promise<void> {
+    const book: Book | null = await this._bookDB.findOneBy({
+      id,
+    });
+
+    if (!book) {
+      throw new NotFoundError(`Book with ID ${id} not found`, "Book Not Found");
+    }
+
+    await this._bookDB.delete(id);
+  }
 }
 
 export default BookRepositoryImpl;

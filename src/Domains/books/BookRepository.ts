@@ -6,7 +6,7 @@ abstract class BookRepository {
   abstract findAll(): Promise<DetailBookResponse[]>;
   abstract findOne(id: string): Promise<DetailBookResponse>;
   abstract updateOne(id: string, payload: AddBook): Promise<DetailBookResponse>;
-  // abstract deleteOne(id: string): Promise<AddedBook>;
+  abstract deleteOne(id: string): void;
 }
 
 export default BookRepository;

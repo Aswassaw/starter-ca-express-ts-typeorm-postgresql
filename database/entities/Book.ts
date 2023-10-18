@@ -13,4 +13,7 @@ export class Book {
 
   @UpdateDateColumn({ type: "timestamp with time zone" })
     updated_at!: Date;
+
+  // @DeleteDateColumn({type: "timestamp with time zone" })
+  //   deleted_at!: Date;
 }

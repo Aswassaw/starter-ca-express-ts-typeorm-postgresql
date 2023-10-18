@@ -21,5 +21,7 @@ router.get("/books", bookService.findAllBookService);
 router.get("/book/:id", bookService.findOneBookService);
 // PUT | /book/:id
 router.put("/book/:id", bookService.updateOneBookService);
+// DELETE | /book/:id
+router.delete("/book/:id", bookService.deleteOneBookService);
 
 export default router;
