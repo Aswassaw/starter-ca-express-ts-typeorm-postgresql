@@ -1,5 +1,5 @@
 import { Response } from "express";
-import ClientError from "./type/ClientError";
+import ClientError from "./custom/ClientError";
 
 const handleError = (res: Response, error: unknown): Response => {
   if (error instanceof ClientError) {
