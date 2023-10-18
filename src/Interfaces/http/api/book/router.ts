@@ -17,5 +17,7 @@ router.post(
 );
 // GET | /books
 router.get("/books", bookService.findAllBookService);
+// GET | /book/:id
+router.get("/book/:id", bookService.findOneBookService);
 
 export default router;

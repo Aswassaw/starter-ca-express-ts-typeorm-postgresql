@@ -46,6 +46,23 @@ class BookRepositoryImpl extends BookRepository {
         })
     );
   }
+
+  async findOne(id: string): Promise<DetailBookResponse> {
+    const book: Book | null = await this._bookDB.findOneBy({
+      id,
+    });
+
+    if (!book) {
+      throw Error("NOT FOUND BRO");
+    }
+
+    return new DetailBookResponse({
+      id: book.id,
+      bookName: book.book_name,
+      createdAt: book.created_at,
+      updatedAt: book.updated_at,
+    });
+  }
 }
 
 export default BookRepositoryImpl;
