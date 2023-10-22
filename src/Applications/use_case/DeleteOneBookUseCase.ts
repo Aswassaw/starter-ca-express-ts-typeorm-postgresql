@@ -12,7 +12,8 @@ class DeleteOneBookUseCase {
   }
 
   async execute(id: string) {
-    return this._bookRepository.deleteOne(id);
+    await this._bookRepository.findOne(id);
+    this._bookRepository.deleteOne(id);
   }
 }
 
