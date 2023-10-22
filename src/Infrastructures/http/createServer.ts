@@ -8,7 +8,7 @@ const createServer: Express = express();
 
 createServer.use(express.json());
 createServer.use(helmet());
-createServer.use(cors({ origin: ["http://localhost:5173"] }));
+createServer.use(cors());
 
 createServer.get("/", (req: Request, res: Response): Response<string> => {
   return res.status(200).send("Server Online!");

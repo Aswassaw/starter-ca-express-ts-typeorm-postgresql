@@ -20,7 +20,13 @@ router.get("/books", bookService.findAllBookService);
 // GET | /book/:id
 router.get("/book/:id", bookService.findOneBookService);
 // PUT | /book/:id
-router.put("/book/:id", bookService.updateOneBookService);
+router.put(
+  "/book/:id",
+  (req: Request, res: Response, next: NextFunction) => {
+    runValidation(req, res, next, addBookSchema);
+  },
+  bookService.updateOneBookService
+);
 // DELETE | /book/:id
 router.delete("/book/:id", bookService.deleteOneBookService);
 
