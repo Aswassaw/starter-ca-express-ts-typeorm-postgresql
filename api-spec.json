@@ -32,19 +32,67 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "bookName": {
-                    "type": "string",
-                    "default": "Example Book Name"
+              "examples": {
+                "book earth": {
+                  "description": "Create Novel Book Earth",
+                  "value": {
+                    "bookName": "Earth Strike",
+                    "tags": [
+                      "Planet",
+                      "Fire"
+                    ]
                   }
                 }
               }
             }
           }
         },
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Insert Book Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "priority": {
+                      "type": "number",
+                      "format": "int32"
+                    },
+                    "tags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "Success Insert",
+                    "value": [
+                      {
+                        "id": 1,
+                        "name": "Java",
+                        "priority": 3,
+                        "tags": [
+                          "Java",
+                          "Python"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/books": {
@@ -54,7 +102,12 @@
           "Book API"
         ],
         "description": "This endpoint is used to get all book data from the database",
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "BookAuth": []
+          }
+        ]
       }
     },
     "/book/{id}": {
@@ -66,13 +119,7 @@
         "description": "This endpoint is used to get one book data from the database based on the book id",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Book id for get one",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/BookId"
           }
         ],
         "responses": {}
@@ -85,13 +132,7 @@
         "description": "This endpoint is used to update one book data from the database based on the book id",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Book id for update one",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/BookId"
           }
         ],
         "requestBody": {
@@ -120,16 +161,70 @@
         "description": "This endpoint is used to delete one book data from the database based on the book id",
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Book id for delete one",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/BookId"
           }
         ],
         "responses": {}
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "BookId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "Book id for get one",
+        "schema": {
+          "type": "string",
+          "default": "008c07b1-b9f0-415d-996a-16eae0381c46"
+        },
+        "examples": {
+          "uuid 1": {
+            "description": "UUID Example 1",
+            "value": "008c07b1-b9f0-415d-996a-16eae0381c46"
+          },
+          "uuid 2": {
+            "description": "UUID Example 2",
+            "value": "003c07b1-b9f0-415d-996a-16eae0381c43"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "InsertBook": {
+        "type": "object",
+        "properties": {
+          "bookName": {
+            "type": "string",
+            "default": "Example Book Name"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "default": [
+                "html",
+                "css",
+                "javascript"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BookAuth": {
+        "description": "Auth For Book restful API",
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      },
+      "MAMAMA": {
+        "description": "Auth For Book restful API",
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
       }
     }
   }
